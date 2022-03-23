@@ -1,4 +1,4 @@
-package org.aztechs157.util;
+package org.aztechs157.lib.input.util;
 
 public class DoubleRange {
     public final double low;

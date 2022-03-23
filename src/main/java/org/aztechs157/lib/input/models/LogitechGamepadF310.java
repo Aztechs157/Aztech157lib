@@ -1,9 +1,9 @@
-package org.aztechs157.input.models;
+package org.aztechs157.lib.input.models;
 
-import org.aztechs157.input.Model;
-import org.aztechs157.input.axis.Axis;
-import org.aztechs157.input.button.Button;
-import org.aztechs157.input.pov.Pov;
+import org.aztechs157.lib.input.Model;
+import org.aztechs157.lib.input.axis.Axis;
+import org.aztechs157.lib.input.button.Button;
+import org.aztechs157.lib.input.pov.Pov;
 
 public class LogitechGamepadF310 extends Model {
 

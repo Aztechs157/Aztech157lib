@@ -1,4 +1,4 @@
-package org.aztechs157.input.button;
+package org.aztechs157.lib.input.button;
 
 public interface ButtonKey {
     public default boolean optional() {

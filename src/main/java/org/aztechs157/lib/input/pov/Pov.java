@@ -1,10 +1,11 @@
-package org.aztechs157.input.pov;
+package org.aztechs157.lib.input.pov;
 
 import java.util.function.IntSupplier;
 
+import org.aztechs157.lib.input.axis.Axis;
+import org.aztechs157.lib.input.button.Button;
+
 import edu.wpi.first.wpilibj.DriverStation;
-import org.aztechs157.input.axis.Axis;
-import org.aztechs157.input.button.Button;
 
 /**
  * Class for getting input from a pov.

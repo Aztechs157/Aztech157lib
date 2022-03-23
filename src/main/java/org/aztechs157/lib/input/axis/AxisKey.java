@@ -1,11 +1,11 @@
-package org.aztechs157.input.pov;
+package org.aztechs157.lib.input.axis;
 
-public interface PovKey {
+public interface AxisKey {
     public default boolean optional() {
         return false;
     }
 
-    public interface Optional extends PovKey {
+    public interface Optional extends AxisKey {
         @Override
         public default boolean optional() {
             return true;

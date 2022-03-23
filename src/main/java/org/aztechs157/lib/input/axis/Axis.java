@@ -1,11 +1,12 @@
-package org.aztechs157.input.axis;
+package org.aztechs157.lib.input.axis;
 
-import static org.aztechs157.util.DoubleRange.scale;
+import static org.aztechs157.lib.input.util.DoubleRange.scale;
 
 import java.util.function.DoubleSupplier;
 
+import org.aztechs157.lib.input.util.DoubleRange;
+
 import edu.wpi.first.wpilibj.DriverStation;
-import org.aztechs157.util.DoubleRange;
 
 /**
  * Class for getting input from a axis. This class has methods and static

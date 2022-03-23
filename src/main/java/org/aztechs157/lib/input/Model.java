@@ -1,8 +1,8 @@
-package org.aztechs157.input;
+package org.aztechs157.lib.input;
 
-import org.aztechs157.input.axis.Axis;
-import org.aztechs157.input.button.Button;
-import org.aztechs157.input.pov.Pov;
+import org.aztechs157.lib.input.axis.Axis;
+import org.aztechs157.lib.input.button.Button;
+import org.aztechs157.lib.input.pov.Pov;
 
 /**
  * Models map physical inputs on a input device to input classes such as

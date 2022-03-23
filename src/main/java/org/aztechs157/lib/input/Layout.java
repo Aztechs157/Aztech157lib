@@ -1,16 +1,17 @@
-package org.aztechs157.input;
+package org.aztechs157.lib.input;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.aztechs157.lib.input.axis.Axis;
+import org.aztechs157.lib.input.axis.AxisKey;
+import org.aztechs157.lib.input.button.Button;
+import org.aztechs157.lib.input.button.ButtonKey;
+import org.aztechs157.lib.input.pov.Pov;
+import org.aztechs157.lib.input.pov.PovKey;
+
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
-import org.aztechs157.input.axis.Axis;
-import org.aztechs157.input.axis.AxisKey;
-import org.aztechs157.input.button.Button;
-import org.aztechs157.input.button.ButtonKey;
-import org.aztechs157.input.pov.Pov;
-import org.aztechs157.input.pov.PovKey;
 
 /**
  * A simple structure that stores the mapping between Button/AxisInput.Keys and
