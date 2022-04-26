@@ -1,14 +1,6 @@
 package org.aztechs157.lib.input.button;
 
-public interface ButtonKey {
-    public default boolean optional() {
-        return false;
-    }
+import org.aztechs157.lib.input.key.KeyBase;
 
-    public interface Optional extends ButtonKey {
-        @Override
-        public default boolean optional() {
-            return true;
-        }
-    }
+public interface ButtonKey extends KeyBase {
 }

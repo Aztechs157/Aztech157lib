@@ -59,7 +59,8 @@ public class Layout implements Sendable {
     }
 
     /**
-     * For this Layout, assign a {@link Axis.Key} to a {@link Axis}. Calling this
+     * For this Layout, assign a {@link Axis.KeyBase} to a {@link Axis}. Calling
+     * this
      * method multiple times with the same key will override the previous
      * assignment.
      *
@@ -71,7 +72,7 @@ public class Layout implements Sendable {
     }
 
     /**
-     * For this Layout, assign a {@link Pov.Key} to a {@link Pov}. Calling this
+     * For this Layout, assign a {@link Pov.KeyBase} to a {@link Pov}. Calling this
      * method multiple times with the same key will override the previous
      * assignment.
      *
@@ -101,7 +102,7 @@ public class Layout implements Sendable {
     }
 
     /**
-     * Retrieve the {@link Axis} associated with a {@link Axis.Key}
+     * Retrieve the {@link Axis} associated with a {@link Axis.KeyBase}
      *
      * @param key The key an axis was assigned to
      * @return The associated axis
@@ -119,7 +120,7 @@ public class Layout implements Sendable {
     }
 
     /**
-     * Retrieve the {@link Pov} associated with a {@link Pov.Key}
+     * Retrieve the {@link Pov} associated with a {@link Pov.KeyBase}
      *
      * @param key The key an pov was assigned to
      * @return The associated pov

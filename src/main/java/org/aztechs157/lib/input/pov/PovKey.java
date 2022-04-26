@@ -1,14 +1,6 @@
 package org.aztechs157.lib.input.pov;
 
-public interface PovKey {
-    public default boolean optional() {
-        return false;
-    }
+import org.aztechs157.lib.input.key.KeyBase;
 
-    public interface Optional extends PovKey {
-        @Override
-        public default boolean optional() {
-            return true;
-        }
-    }
+public interface PovKey extends KeyBase {
 }
