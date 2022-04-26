@@ -1,10 +1,10 @@
 package org.aztechs157.lib.input.axis;
 
-import static org.aztechs157.lib.input.util.DoubleRange.scale;
+import static org.aztechs157.lib.util.DoubleRange.scale;
 
 import java.util.function.DoubleSupplier;
 
-import org.aztechs157.lib.input.util.DoubleRange;
+import org.aztechs157.lib.util.DoubleRange;
 
 import edu.wpi.first.wpilibj.DriverStation;
 

@@ -1,4 +1,4 @@
-package org.aztechs157.lib.input.util;
+package org.aztechs157.lib.util;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
