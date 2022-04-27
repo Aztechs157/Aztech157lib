@@ -1,11 +1,8 @@
 package org.aztechs157.lib.input;
 
-import org.aztechs157.lib.input.axis.Axis;
-import org.aztechs157.lib.input.axis.AxisKey;
-import org.aztechs157.lib.input.button.Button;
-import org.aztechs157.lib.input.button.ButtonKey;
-import org.aztechs157.lib.input.pov.Pov;
-import org.aztechs157.lib.input.pov.PovKey;
+import org.aztechs157.lib.input.parts.Axis;
+import org.aztechs157.lib.input.parts.Button;
+import org.aztechs157.lib.input.parts.Pov;
 
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
@@ -31,9 +28,9 @@ public class ShuffleLayoutChooser implements Sendable {
      * Get a button from the currently selected layout.
      *
      * @param key Which button to retrieve
-     * @return A {@link Button} and {@link ButtonKey} representing the input
+     * @return A {@link Button} and {@link Button.Key} representing the input
      */
-    public Button button(final ButtonKey key) {
+    public Button button(final Button.Key key) {
         return new Button(() -> getSelected().button(key).get());
     }
 
@@ -43,7 +40,7 @@ public class ShuffleLayoutChooser implements Sendable {
      * @param key Which axis to retrieve
      * @return A {@link Axis} representing the input
      */
-    public Axis axis(final AxisKey key) {
+    public Axis axis(final Axis.Key key) {
         return new Axis(() -> getSelected().axis(key).get());
     }
 
@@ -53,7 +50,7 @@ public class ShuffleLayoutChooser implements Sendable {
      * @param key Which pov to retrieve
      * @return A {@link Pov} representing the input
      */
-    public Pov pov(final PovKey key) {
+    public Pov pov(final Pov.Key key) {
         return new Pov(() -> getSelected().pov(key).get());
     }
 

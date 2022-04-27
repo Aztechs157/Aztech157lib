@@ -11,17 +11,17 @@ public class DriverInputs extends ShuffleLayoutChooser {
         final var logitech = new LogitechGamepadF310(0);
 
         defaultLayout.assign(
-                Keys.Axis.DriveSpeedX,
+                Keys.AxisKeys.DriveSpeedX,
                 logitech.leftStickX.scaled(1));
         defaultLayout.assign(
-                Keys.Axis.DriveSpeedY,
+                Keys.AxisKeys.DriveSpeedY,
                 logitech.leftStickY.scaled(1).inverted());
         defaultLayout.assign(
-                Keys.Axis.DriveRotation,
+                Keys.AxisKeys.DriveRotation,
                 logitech.rightStickX.scaled(1));
 
-        defaultLayout.assign(Keys.Button.Hello, logitech.start);
-        defaultLayout.assign(Keys.Button.IntakeRun, logitech.rightBumper);
-        defaultLayout.assign(Keys.Button.LowShoot, logitech.back);
+        defaultLayout.assign(Keys.ButtonKeys.Hello, logitech.start);
+        defaultLayout.assign(Keys.ButtonKeys.IntakeRun, logitech.rightBumper);
+        defaultLayout.assign(Keys.ButtonKeys.LowShoot, logitech.back);
     }
 }

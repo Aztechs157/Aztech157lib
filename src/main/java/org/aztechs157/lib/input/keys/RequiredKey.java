@@ -1,4 +1,4 @@
-package org.aztechs157.lib.input.key;
+package org.aztechs157.lib.input.keys;
 
 public interface RequiredKey extends KeyBase {
     @Override

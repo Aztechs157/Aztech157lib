@@ -3,12 +3,9 @@ package org.aztechs157.lib.input;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.aztechs157.lib.input.axis.Axis;
-import org.aztechs157.lib.input.axis.AxisKey;
-import org.aztechs157.lib.input.button.Button;
-import org.aztechs157.lib.input.button.ButtonKey;
-import org.aztechs157.lib.input.pov.Pov;
-import org.aztechs157.lib.input.pov.PovKey;
+import org.aztechs157.lib.input.parts.Axis;
+import org.aztechs157.lib.input.parts.Button;
+import org.aztechs157.lib.input.parts.Pov;
 
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
@@ -41,12 +38,12 @@ public class Layout implements Sendable {
         return name;
     }
 
-    private final Map<ButtonKey, Button> buttons = new HashMap<>();
-    private final Map<AxisKey, Axis> axes = new HashMap<>();
-    private final Map<PovKey, Pov> povs = new HashMap<>();
+    private final Map<Button.Key, Button> buttons = new HashMap<>();
+    private final Map<Axis.Key, Axis> axes = new HashMap<>();
+    private final Map<Pov.Key, Pov> povs = new HashMap<>();
 
     /**
-     * For this Layout, assign a {@link ButtonKey} to a {@link Button}.
+     * For this Layout, assign a {@link Button.Key} to a {@link Button}.
      * Calling
      * this method multiple times with the same key will override the previous
      * assignment.
@@ -54,7 +51,7 @@ public class Layout implements Sendable {
      * @param key    The key to assign with
      * @param button The button being assigned
      */
-    public void assign(final ButtonKey key, final Button button) {
+    public void assign(final Button.Key key, final Button button) {
         buttons.put(key, button);
     }
 
@@ -67,7 +64,7 @@ public class Layout implements Sendable {
      * @param key  The key to assign with
      * @param axis The axis being assigned
      */
-    public void assign(final AxisKey key, final Axis axis) {
+    public void assign(final Axis.Key key, final Axis axis) {
         axes.put(key, axis);
     }
 
@@ -79,17 +76,17 @@ public class Layout implements Sendable {
      * @param key The key to assign with
      * @param pov The pov being assigned
      */
-    public void assign(final PovKey key, final Pov pov) {
+    public void assign(final Pov.Key key, final Pov pov) {
         povs.put(key, pov);
     }
 
     /**
-     * Retrieve the {@link Button} associated with a {@link ButtonKey}
+     * Retrieve the {@link Button} associated with a {@link Button.Key}
      *
      * @param key The key a button was assigned to
      * @return The associated button
      */
-    public Button button(final ButtonKey key) {
+    public Button button(final Button.Key key) {
         final var button = buttons.get(key);
 
         if (button != null) {
@@ -107,7 +104,7 @@ public class Layout implements Sendable {
      * @param key The key an axis was assigned to
      * @return The associated axis
      */
-    public Axis axis(final AxisKey key) {
+    public Axis axis(final Axis.Key key) {
         final var axis = axes.get(key);
 
         if (axis != null) {
@@ -125,7 +122,7 @@ public class Layout implements Sendable {
      * @param key The key an pov was assigned to
      * @return The associated pov
      */
-    public Pov pov(final PovKey key) {
+    public Pov pov(final Pov.Key key) {
         final var pov = povs.get(key);
 
         if (pov != null) {

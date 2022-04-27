@@ -1,9 +1,10 @@
-package org.aztechs157.lib.input.axis;
+package org.aztechs157.lib.input.parts;
 
 import static org.aztechs157.lib.util.DoubleRange.scale;
 
 import java.util.function.DoubleSupplier;
 
+import org.aztechs157.lib.input.keys.KeyBase;
 import org.aztechs157.lib.util.DoubleRange;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -14,6 +15,9 @@ import edu.wpi.first.wpilibj.DriverStation;
  * {@link Axis}.
  */
 public class Axis implements DoubleSupplier {
+    public interface Key extends KeyBase {
+    }
+
     private final DoubleSupplier value;
 
     public Axis(final int deviceId, final int axisId) {

@@ -1,9 +1,9 @@
 package org.aztechs157.lib.input.models;
 
 import org.aztechs157.lib.input.Model;
-import org.aztechs157.lib.input.axis.Axis;
-import org.aztechs157.lib.input.button.Button;
-import org.aztechs157.lib.input.pov.Pov;
+import org.aztechs157.lib.input.parts.Axis;
+import org.aztechs157.lib.input.parts.Button;
+import org.aztechs157.lib.input.parts.Pov;
 
 public class LogitechAttack extends Model {
 

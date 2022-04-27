@@ -1,6 +1,8 @@
-package org.aztechs157.lib.input.button;
+package org.aztechs157.lib.input.parts;
 
 import java.util.function.BooleanSupplier;
+
+import org.aztechs157.lib.input.keys.KeyBase;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
@@ -10,6 +12,8 @@ import edu.wpi.first.wpilibj.DriverStation;
  * {@link Button}.
  */
 public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
+    public interface Key extends KeyBase {
+    }
 
     public Button(final int deviceId, final int buttonId) {
         this(() -> DriverStation.getStickButton(deviceId, buttonId));
