@@ -1,11 +1,9 @@
 package org.aztechs157.lib.input.parts;
 
-import static org.aztechs157.lib.util.DoubleRange.scale;
-
 import java.util.function.DoubleSupplier;
 
 import org.aztechs157.lib.input.keys.KeyBase;
-import org.aztechs157.lib.util.DoubleRange;
+import org.aztechs157.lib.util.Range;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
@@ -38,7 +36,7 @@ public class Axis implements DoubleSupplier {
     }
 
     public static final double DEFAULT_VALUE = 0;
-    public static final DoubleRange DEFAULT_RANGE = new DoubleRange(-1, 1);
+    public static final Range DEFAULT_RANGE = new Range(-1, 1);
     public static final Axis DEFAULT = new Axis(() -> DEFAULT_VALUE);
 
     /**
@@ -84,8 +82,8 @@ public class Axis implements DoubleSupplier {
      * @param range The range to clamp to
      * @return A new input with clamp applied
      */
-    public Axis clamp(final DoubleRange range) {
-        return new Axis(() -> range.applyClamp(get()));
+    public Axis clamp(final Range range) {
+        return new Axis(() -> range.clamp(get()));
     }
 
     /**
@@ -98,16 +96,18 @@ public class Axis implements DoubleSupplier {
      * @param deadzone The range of the deadzone
      * @return A new input with the deadzone applied
      */
-    public Axis deadzone(final DoubleRange deadzone) {
+    public Axis deadzone(final Range deadzone) {
         return deadzone(deadzone, DEFAULT_RANGE, DEFAULT_VALUE);
     }
 
-    public Axis deadzone(final DoubleRange deadzone, final DoubleRange fullRange, final double center) {
-        final var leftFullRange = new DoubleRange(fullRange.low, center);
-        final var rightFullRange = new DoubleRange(center, fullRange.high);
+    public Axis deadzone(final Range deadzone, final Range fullRange, final double fullRangeCenter) {
+        final var leftDeadzoneRange = new Range(fullRange.low, deadzone.low);
+        final var leftFullRange = new Range(fullRange.low, fullRangeCenter);
+        final var leftConverter = leftDeadzoneRange.createConverterTo(leftFullRange);
 
-        final var leftDeadzoneRange = new DoubleRange(fullRange.low, deadzone.low);
-        final var rightDeadzoneRange = new DoubleRange(deadzone.high, fullRange.high);
+        final var rightDeadzoneRange = new Range(deadzone.high, fullRange.high);
+        final var rightFullRange = new Range(fullRangeCenter, fullRange.high);
+        final var rightConverter = rightDeadzoneRange.createConverterTo(rightFullRange);
 
         return new Axis(() -> {
             final var value = get();
@@ -116,10 +116,10 @@ public class Axis implements DoubleSupplier {
                 return 0;
 
             } else if (leftDeadzoneRange.contains(value)) {
-                return scale(leftDeadzoneRange, value, leftFullRange);
+                return leftConverter.convert(value);
 
             } else if (rightDeadzoneRange.contains(value)) {
-                return scale(rightDeadzoneRange, value, rightFullRange);
+                return rightConverter.convert(value);
             }
 
             throw new Error("Attempted to apply deadzone to axis value outside of full range "

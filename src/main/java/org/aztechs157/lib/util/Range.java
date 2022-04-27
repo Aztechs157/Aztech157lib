@@ -1,10 +1,13 @@
 package org.aztechs157.lib.util;
 
-public class DoubleRange {
+/**
+ * Safe to be constant
+ */
+public class Range {
     public final double low;
     public final double high;
 
-    public DoubleRange(final double low, final double high) {
+    public Range(final double low, final double high) {
         this.low = low;
         this.high = high;
     }
@@ -41,7 +44,7 @@ public class DoubleRange {
      * @param value The value to clamp
      * @return The clamped value
      */
-    public double applyClamp(final double value) {
+    public double clamp(final double value) {
         if (value > high) {
             return high;
         } else if (value < low) {
@@ -60,19 +63,7 @@ public class DoubleRange {
      * @param outputRange The range of the output value
      * @return The corresponding number in `outputRange`
      */
-    public static double scale(final DoubleRange inputRange, final double inputValue, final DoubleRange outputRange) {
-        // Scale between output and input ranges
-        final var scale = outputRange.length() / inputRange.length();
-
-        // Shift to zero based input range
-        final var basedInput = inputValue - inputRange.low;
-
-        // Scale the zero based input
-        final var scaled = basedInput * scale;
-
-        // Shift from zero based to output range
-        final var outputValue = scaled + outputRange.low;
-
-        return outputValue;
+    public RangeConverter createConverterTo(final Range outputRange) {
+        return new RangeConverter(this, outputRange);
     }
 }
