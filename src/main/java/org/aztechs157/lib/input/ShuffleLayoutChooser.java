@@ -11,9 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 /**
  * Object that manages layouts. A layout can be selected from Shuffleboard that
  * can then be used by the robot. It maps the inputs of a
- * {@link ShuffleLayoutChooser}
- * to the
- * desired functions of the robot.
+ * {@link ShuffleLayoutChooser} to the desired functions of the robot.
  */
 public class ShuffleLayoutChooser implements Sendable {
 
@@ -28,7 +26,7 @@ public class ShuffleLayoutChooser implements Sendable {
      * Get a button from the currently selected layout.
      *
      * @param key Which button to retrieve
-     * @return A {@link Button} and {@link Button.Key} representing the input
+     * @return A {@link Button} representing the input
      */
     public Button button(final Button.Key key) {
         return new Button(() -> getSelected().button(key).get());
