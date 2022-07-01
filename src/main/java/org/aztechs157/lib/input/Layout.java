@@ -13,7 +13,7 @@ import edu.wpi.first.util.sendable.SendableBuilder;
 /**
  * A simple structure that stores the mapping between Button/AxisInput.Keys and
  * Button/AxisInputs respectively. These are meant to be used with
- * {@link ShuffleLayoutChooser} to allow hot-swapping of various control
+ * {@link SelectableLayout} to allow hot-swapping of various control
  * configurations, otherwise known as "layouts."
  */
 public class Layout implements Sendable {
