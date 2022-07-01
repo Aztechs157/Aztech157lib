@@ -14,12 +14,12 @@ public class Pov {
 
     private final IntSupplier degrees;
 
-    public Pov(final int deviceId, final int povId) {
-        this(() -> DriverStation.getStickPOV(deviceId, povId));
-    }
-
     public Pov(final IntSupplier degrees) {
         this.degrees = degrees;
+    }
+
+    public static Pov fromDriverStation(final int deviceId, final int povId) {
+        return new Pov(() -> DriverStation.getStickPOV(deviceId, povId));
     }
 
     public int get() {

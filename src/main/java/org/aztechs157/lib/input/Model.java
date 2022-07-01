@@ -24,7 +24,7 @@ public class Model {
      * @return The modeled {@link Button}
      */
     public Button button(final int buttonId) {
-        return new Button(deviceId, buttonId);
+        return Button.fromDriverStation(deviceId, buttonId);
     }
 
     /**
@@ -34,7 +34,7 @@ public class Model {
      * @return The modeled {@link Axis}
      */
     public Axis axis(final int axisId) {
-        return new Axis(deviceId, axisId);
+        return Axis.fromDriverStation(deviceId, axisId);
     }
 
     /**
@@ -44,6 +44,6 @@ public class Model {
      * @return The modeled {@link Pov}
      */
     public Pov pov(final int povId) {
-        return new Pov(deviceId, povId);
+        return Pov.fromDriverStation(deviceId, povId);
     }
 }

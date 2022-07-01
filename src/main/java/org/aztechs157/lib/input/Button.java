@@ -14,12 +14,12 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
     public static class Key {
     }
 
-    public Button(final int deviceId, final int buttonId) {
-        this(() -> DriverStation.getStickButton(deviceId, buttonId));
-    }
-
     public Button(final BooleanSupplier isPressed) {
         super(isPressed);
+    }
+
+    public static Button fromDriverStation(final int deviceId, final int buttonId) {
+        return new Button(() -> DriverStation.getStickButton(deviceId, buttonId));
     }
 
     public Button map(final UnaryOperator<Boolean> function) {

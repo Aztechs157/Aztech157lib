@@ -18,12 +18,12 @@ public class Axis {
 
     private final DoubleSupplier value;
 
-    public Axis(final int deviceId, final int axisId) {
-        this(() -> DriverStation.getStickAxis(deviceId, axisId));
-    }
-
     public Axis(final DoubleSupplier value) {
         this.value = value;
+    }
+
+    public static Axis fromDriverStation(final int deviceId, final int axisId) {
+        return new Axis(() -> DriverStation.getStickAxis(deviceId, axisId));
     }
 
     public double get() {
