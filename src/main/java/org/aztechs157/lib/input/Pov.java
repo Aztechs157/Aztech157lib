@@ -30,7 +30,8 @@ public class Pov {
     }
 
     public static Pov fromDriverStation(final int deviceId, final int povId) {
-        return new Pov(() -> DriverStation.getStickPOV(deviceId, povId));
+        return new Pov(() -> DriverStation.getStickPOV(deviceId, povId))
+                .name("Device " + deviceId + " Pov " + povId);
     }
 
     private String name = "Unknown";

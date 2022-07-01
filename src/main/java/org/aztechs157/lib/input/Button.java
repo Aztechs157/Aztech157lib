@@ -30,7 +30,8 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
     }
 
     public static Button fromDriverStation(final int deviceId, final int buttonId) {
-        return new Button(() -> DriverStation.getStickButton(deviceId, buttonId));
+        return new Button(() -> DriverStation.getStickButton(deviceId, buttonId))
+                .name("Device " + deviceId + " Button " + buttonId);
     }
 
     private String name = "Unknown";

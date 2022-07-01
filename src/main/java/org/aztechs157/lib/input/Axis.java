@@ -34,7 +34,8 @@ public class Axis {
     }
 
     public static Axis fromDriverStation(final int deviceId, final int axisId) {
-        return new Axis(() -> DriverStation.getStickAxis(deviceId, axisId));
+        return new Axis(() -> DriverStation.getStickAxis(deviceId, axisId))
+                .name("Device " + deviceId + " Axis " + axisId);
     }
 
     private String name = "Unknown";
