@@ -1,8 +1,6 @@
-package org.aztechs157.lib.input.parts;
+package org.aztechs157.lib.input;
 
 import java.util.function.IntSupplier;
-
-import org.aztechs157.lib.input.keys.KeyBase;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
@@ -10,7 +8,7 @@ import edu.wpi.first.wpilibj.DriverStation;
  * Class for getting input from a pov.
  */
 public class Pov implements IntSupplier {
-    public interface Key extends KeyBase {
+    public static class Key {
     }
 
     private final IntSupplier degrees;

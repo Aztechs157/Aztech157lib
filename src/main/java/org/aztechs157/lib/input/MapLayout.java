@@ -3,36 +3,11 @@ package org.aztechs157.lib.input;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.aztechs157.lib.input.parts.Axis;
-import org.aztechs157.lib.input.parts.Button;
-import org.aztechs157.lib.input.parts.Pov;
-
 /**
  * A simple structure that stores the mapping between keys and inputs. These can
  * be used with {@link SelectableLayout} to allow hot-swapping of layouts.
  */
 public class MapLayout implements Layout {
-
-    private final String name;
-
-    /**
-     * Create a new layout with the specified name
-     *
-     * @param name The name this Layout will display as in Shuffleboard
-     */
-    public MapLayout(final String name) {
-        this.name = name;
-    }
-
-    /**
-     * Getter for this Layout's name
-     *
-     * @return The name of this Layout
-     */
-    public String getName() {
-        return name;
-    }
-
     private final Map<Button.Key, Button> buttons = new HashMap<>();
     private final Map<Axis.Key, Axis> axes = new HashMap<>();
     private final Map<Pov.Key, Pov> povs = new HashMap<>();

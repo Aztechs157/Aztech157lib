@@ -1,8 +1,7 @@
-package org.aztechs157.lib.input.parts;
+package org.aztechs157.lib.input;
 
 import java.util.function.DoubleSupplier;
 
-import org.aztechs157.lib.input.keys.KeyBase;
 import org.aztechs157.lib.util.Range;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -13,7 +12,7 @@ import edu.wpi.first.wpilibj.DriverStation;
  * {@link Axis}.
  */
 public class Axis implements DoubleSupplier {
-    public interface Key extends KeyBase {
+    public static class Key {
     }
 
     private final DoubleSupplier value;

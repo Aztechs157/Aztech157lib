@@ -2,10 +2,6 @@ package org.aztechs157.lib.input;
 
 import java.util.function.Supplier;
 
-import org.aztechs157.lib.input.parts.Axis;
-import org.aztechs157.lib.input.parts.Button;
-import org.aztechs157.lib.input.parts.Pov;
-
 /**
  * Object that manages layouts. A layout can be selected from Shuffleboard that
  * can then be used by the robot. It maps the inputs of a

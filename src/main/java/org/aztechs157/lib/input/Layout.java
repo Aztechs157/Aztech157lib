@@ -1,9 +1,5 @@
 package org.aztechs157.lib.input;
 
-import org.aztechs157.lib.input.parts.Axis;
-import org.aztechs157.lib.input.parts.Button;
-import org.aztechs157.lib.input.parts.Pov;
-
 public interface Layout {
     /**
      * Retrieve the {@link Button} associated with a {@link Button.Key}

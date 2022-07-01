@@ -1,21 +1,14 @@
 package org.aztechs157.examples.input;
 
-import org.aztechs157.lib.input.parts.Axis;
-import org.aztechs157.lib.input.parts.Button;
+import org.aztechs157.lib.input.Axis;
+import org.aztechs157.lib.input.Button;
 
 public class Keys {
-    public enum ButtonKeys implements Button.Key {
-        Hello, UptakeRun, KickerRun, IntakeRun, ShooterRun, EjectCargo, DebugPrint, AutoAim, LowShoot,
-        ResetDrivePosition, TrackCargo, autoTest, Hang, ExtendHanger, RetractHanger, RotateHangLeft, RotateHangRight,
-        CenterTurret
-    }
+    public static final Axis.Key driveSpeedX = new Axis.Key();
+    public static final Axis.Key driveSpeedY = new Axis.Key();
+    public static final Axis.Key driveRotation = new Axis.Key();
 
-    public enum DebugButtonKeys implements Button.Key {
-        PrintFoo, PrintBar
-    }
-
-    public enum AxisKeys implements Axis.Key {
-        TurnTurret, DriveSpeedX, DriveSpeedY, DriveRotation,
-        TurretSpeed, AimerSpeed, ExtendSpeed, RotateSpeed
-    }
+    public static final Button.Key hello = new Button.Key();
+    public static final Button.Key intakeRun = new Button.Key();
+    public static final Button.Key lowShoot = new Button.Key();
 }
