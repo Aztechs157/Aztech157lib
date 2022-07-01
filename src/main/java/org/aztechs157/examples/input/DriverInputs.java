@@ -1,10 +1,10 @@
 package org.aztechs157.examples.input;
 
-import org.aztechs157.lib.input.Layout;
+import org.aztechs157.lib.input.MapLayout;
 import org.aztechs157.lib.input.models.LogitechGamepadF310;
 
 public class DriverInputs {
-    final Layout layout = new Layout("Default");
+    final MapLayout layout = new MapLayout("Default");
 
     public DriverInputs() {
         final var logitech = new LogitechGamepadF310(0);

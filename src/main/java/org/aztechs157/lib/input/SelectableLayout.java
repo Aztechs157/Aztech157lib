@@ -10,10 +10,9 @@ import org.aztechs157.lib.input.parts.Pov;
  * Object that manages layouts. A layout can be selected from Shuffleboard that
  * can then be used by the robot. It maps the inputs of a
  * {@link SelectableLayout}
- * to the
- * desired functions of the robot.
+ * to the desired functions of the robot.
  */
-public class SelectableLayout {
+public class SelectableLayout implements Layout {
     private final Supplier<Layout> layoutSupplier;
 
     public SelectableLayout(final Supplier<Layout> layoutSupplier) {
