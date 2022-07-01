@@ -14,6 +14,17 @@ import edu.wpi.first.wpilibj.DriverStation;
  */
 public class Axis {
     public static class Key {
+        private String name = "Unknown";
+
+        public Key name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 
     private final DoubleSupplier value;
@@ -26,12 +37,24 @@ public class Axis {
         return new Axis(() -> DriverStation.getStickAxis(deviceId, axisId));
     }
 
+    private String name = "Unknown";
+
+    public Axis name(final String name) {
+        this.name = name;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public double get() {
         return value.getAsDouble();
     }
 
     public Axis map(final DoubleUnaryOperator function) {
-        return new Axis(() -> function.applyAsDouble(get()));
+        return new Axis(() -> function.applyAsDouble(get())).name(name);
     }
 
     /**

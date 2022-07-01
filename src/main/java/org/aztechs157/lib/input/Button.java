@@ -12,6 +12,17 @@ import edu.wpi.first.wpilibj.DriverStation;
  */
 public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
     public static class Key {
+        private String name = "Unknown";
+
+        public Key name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 
     public Button(final BooleanSupplier isPressed) {
@@ -22,8 +33,20 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
         return new Button(() -> DriverStation.getStickButton(deviceId, buttonId));
     }
 
+    private String name = "Unknown";
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public Button name(final String name) {
+        this.name = name;
+        return this;
+    }
+
     public Button map(final UnaryOperator<Boolean> function) {
-        return new Button(() -> function.apply(get()));
+        return new Button(() -> function.apply(get())).name(name);
     }
 
     /**

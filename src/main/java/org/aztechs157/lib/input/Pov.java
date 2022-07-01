@@ -10,6 +10,17 @@ import edu.wpi.first.wpilibj.DriverStation;
  */
 public class Pov {
     public static class Key {
+        private String name = "Unknown";
+
+        public Key name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 
     private final IntSupplier degrees;
@@ -22,12 +33,24 @@ public class Pov {
         return new Pov(() -> DriverStation.getStickPOV(deviceId, povId));
     }
 
+    private String name = "Unknown";
+
+    public Pov name(final String name) {
+        this.name = name;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public int get() {
         return degrees.getAsInt();
     }
 
     public Pov map(final IntUnaryOperator function) {
-        return new Pov(() -> function.applyAsInt(get()));
+        return new Pov(() -> function.applyAsInt(get())).name(name);
     }
 
     public static final int CENTER = -1;
@@ -40,19 +63,19 @@ public class Pov {
     public static final int LEFT = 45 * 6;
     public static final int UP_LEFT = 45 * 7;
 
-    public Button matchesValue(final int degrees) {
-        return new Button(() -> get() == degrees);
+    public Button matchesValue(final int degrees, final String name) {
+        return new Button(() -> get() == degrees).name(this.name + " " + name);
     }
 
-    public final Button center = matchesValue(CENTER);
-    public final Button up = matchesValue(UP);
-    public final Button upRight = matchesValue(UP_RIGHT);
-    public final Button right = matchesValue(RIGHT);
-    public final Button downRight = matchesValue(DOWN_RIGHT);
-    public final Button down = matchesValue(DOWN);
-    public final Button downLeft = matchesValue(DOWN_LEFT);
-    public final Button left = matchesValue(LEFT);
-    public final Button upLeft = matchesValue(UP_LEFT);
+    public final Button center = matchesValue(CENTER, "Center");
+    public final Button up = matchesValue(UP, "Up");
+    public final Button upRight = matchesValue(UP_RIGHT, "Up Right");
+    public final Button right = matchesValue(RIGHT, "Right");
+    public final Button downRight = matchesValue(DOWN_RIGHT, "Down Right");
+    public final Button down = matchesValue(DOWN, "Down");
+    public final Button downLeft = matchesValue(DOWN_LEFT, "Down Left");
+    public final Button left = matchesValue(LEFT, "Left");
+    public final Button upLeft = matchesValue(UP_LEFT, "Up Left");
 
     public final Axis x = new Axis(() -> {
         final var value = get();
@@ -60,7 +83,7 @@ public class Pov {
             return 0;
         }
         return Math.round(Math.sin(Math.toRadians(value)));
-    });
+    }).name(name + " X");
 
     public final Axis y = new Axis(() -> {
         final var value = get();
@@ -68,5 +91,5 @@ public class Pov {
             return 0;
         }
         return Math.round(Math.cos(Math.toRadians(value)));
-    });
+    }).name(name + " Y");
 }
