@@ -14,16 +14,16 @@ import edu.wpi.first.wpilibj.DriverStation;
  */
 public class Axis {
     public static class Key {
-        private String name = "Unknown";
+        private String label = "Unknown";
 
-        public Key name(final String name) {
-            this.name = name;
+        public Key label(final String label) {
+            this.label = label;
             return this;
         }
 
         @Override
         public String toString() {
-            return name;
+            return label;
         }
     }
 
@@ -35,19 +35,19 @@ public class Axis {
 
     public static Axis fromDriverStation(final int deviceId, final int axisId) {
         return new Axis(() -> DriverStation.getStickAxis(deviceId, axisId))
-                .name("Device " + deviceId + " Axis " + axisId);
+                .label("Device " + deviceId + " Axis " + axisId);
     }
 
-    private String name = "Unknown";
+    private String label = "Unknown";
 
-    public Axis name(final String name) {
-        this.name = name;
+    public Axis label(final String label) {
+        this.label = label;
         return this;
     }
 
     @Override
     public String toString() {
-        return name;
+        return label;
     }
 
     public double get() {
@@ -55,7 +55,7 @@ public class Axis {
     }
 
     public Axis map(final DoubleUnaryOperator function) {
-        return new Axis(() -> function.applyAsDouble(get())).name(name);
+        return new Axis(() -> function.applyAsDouble(get())).label(label);
     }
 
     /**

@@ -10,16 +10,16 @@ import edu.wpi.first.wpilibj.DriverStation;
  */
 public class Pov {
     public static class Key {
-        private String name = "Unknown";
+        private String label = "Unknown";
 
-        public Key name(final String name) {
-            this.name = name;
+        public Key label(final String label) {
+            this.label = label;
             return this;
         }
 
         @Override
         public String toString() {
-            return name;
+            return label;
         }
     }
 
@@ -31,19 +31,19 @@ public class Pov {
 
     public static Pov fromDriverStation(final int deviceId, final int povId) {
         return new Pov(() -> DriverStation.getStickPOV(deviceId, povId))
-                .name("Device " + deviceId + " Pov " + povId);
+                .label("Device " + deviceId + " Pov " + povId);
     }
 
-    private String name = "Unknown";
+    private String label = "Unknown";
 
-    public Pov name(final String name) {
-        this.name = name;
+    public Pov label(final String label) {
+        this.label = label;
         return this;
     }
 
     @Override
     public String toString() {
-        return name;
+        return label;
     }
 
     public int get() {
@@ -51,7 +51,7 @@ public class Pov {
     }
 
     public Pov map(final IntUnaryOperator function) {
-        return new Pov(() -> function.applyAsInt(get())).name(name);
+        return new Pov(() -> function.applyAsInt(get())).label(label);
     }
 
     public static final int CENTER = -1;
@@ -65,7 +65,7 @@ public class Pov {
     public static final int UP_LEFT = 45 * 7;
 
     public Button matchesValue(final int degrees, final String name) {
-        return new Button(() -> get() == degrees).name(this.name + " " + name);
+        return new Button(() -> get() == degrees).label(this.label + " " + name);
     }
 
     public final Button center = matchesValue(CENTER, "Center");
@@ -84,7 +84,7 @@ public class Pov {
             return 0;
         }
         return Math.round(Math.sin(Math.toRadians(value)));
-    }).name(name + " X");
+    }).label(label + " X");
 
     public final Axis y = new Axis(() -> {
         final var value = get();
@@ -92,5 +92,5 @@ public class Pov {
             return 0;
         }
         return Math.round(Math.cos(Math.toRadians(value)));
-    }).name(name + " Y");
+    }).label(label + " Y");
 }
