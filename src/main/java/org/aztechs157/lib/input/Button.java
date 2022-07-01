@@ -1,6 +1,7 @@
 package org.aztechs157.lib.input;
 
 import java.util.function.BooleanSupplier;
+import java.util.function.UnaryOperator;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
@@ -21,8 +22,9 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
         super(isPressed);
     }
 
-    public static final boolean DEFAULT_VALUE = false;
-    public static final Button DEFAULT = new Button(() -> DEFAULT_VALUE);
+    public Button map(final UnaryOperator<Boolean> function) {
+        return new Button(() -> function.apply(get()));
+    }
 
     /**
      * Inverts the input; similar to a boolean `!`
@@ -30,7 +32,7 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
      * @return A new inverted input
      */
     public Button inverted() {
-        return new Button(() -> !get());
+        return map(value -> !value);
     }
 
     /**

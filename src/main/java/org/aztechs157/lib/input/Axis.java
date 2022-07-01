@@ -1,6 +1,7 @@
 package org.aztechs157.lib.input;
 
 import java.util.function.DoubleSupplier;
+import java.util.function.DoubleUnaryOperator;
 
 import org.aztechs157.lib.util.Range;
 
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.DriverStation;
  * methods to modify and compose {@link Axis}s into a new
  * {@link Axis}.
  */
-public class Axis implements DoubleSupplier {
+public class Axis {
     public static class Key {
     }
 
@@ -25,18 +26,13 @@ public class Axis implements DoubleSupplier {
         this.value = value;
     }
 
-    @Override
-    public double getAsDouble() {
-        return value.getAsDouble();
-    }
-
     public double get() {
         return value.getAsDouble();
     }
 
-    public static final double DEFAULT_VALUE = 0;
-    public static final Range DEFAULT_RANGE = new Range(-1, 1);
-    public static final Axis DEFAULT = new Axis(() -> DEFAULT_VALUE);
+    public Axis map(final DoubleUnaryOperator function) {
+        return new Axis(() -> function.applyAsDouble(get()));
+    }
 
     /**
      * Inverts the input by negating the number's sign
@@ -44,7 +40,7 @@ public class Axis implements DoubleSupplier {
      * @return A new inverted input
      */
     public Axis inverted() {
-        return new Axis(() -> -get());
+        return map(value -> -value);
     }
 
     /**
@@ -54,7 +50,7 @@ public class Axis implements DoubleSupplier {
      * @return A new input with the scale applied
      */
     public Axis scaled(final double scale) {
-        return new Axis(() -> get() * scale);
+        return map(value -> value * scale);
     }
 
     /**
@@ -64,15 +60,15 @@ public class Axis implements DoubleSupplier {
      * @return A new input with the scale applied
      */
     public Axis scaled(final DoubleSupplier scale) {
-        return new Axis(() -> get() * scale.getAsDouble());
+        return map(value -> value * scale.getAsDouble());
     }
 
     public Axis offset(final double offset) {
-        return new Axis(() -> get() + offset);
+        return map(value -> value + offset);
     }
 
     public Axis offset(final DoubleSupplier offset) {
-        return new Axis(() -> get() + offset.getAsDouble());
+        return map(value -> value + offset.getAsDouble());
     }
 
     /**
@@ -82,7 +78,7 @@ public class Axis implements DoubleSupplier {
      * @return A new input with clamp applied
      */
     public Axis clamp(final Range range) {
-        return new Axis(() -> range.clamp(get()));
+        return map(value -> range.clamp(value));
     }
 
     /**
@@ -96,7 +92,7 @@ public class Axis implements DoubleSupplier {
      * @return A new input with the deadzone applied
      */
     public Axis deadzone(final Range deadzone) {
-        return deadzone(deadzone, DEFAULT_RANGE, DEFAULT_VALUE);
+        return deadzone(deadzone, new Range(-1, 1), 0);
     }
 
     public Axis deadzone(final Range deadzone, final Range fullRange, final double fullRangeCenter) {
@@ -108,8 +104,7 @@ public class Axis implements DoubleSupplier {
         final var rightFullRange = new Range(fullRangeCenter, fullRange.high);
         final var rightConverter = rightDeadzoneRange.createConverterTo(rightFullRange);
 
-        return new Axis(() -> {
-            final var value = get();
+        return map(value -> {
 
             if (deadzone.contains(value)) {
                 return 0;

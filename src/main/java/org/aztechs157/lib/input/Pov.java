@@ -1,13 +1,14 @@
 package org.aztechs157.lib.input;
 
 import java.util.function.IntSupplier;
+import java.util.function.IntUnaryOperator;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
 /**
  * Class for getting input from a pov.
  */
-public class Pov implements IntSupplier {
+public class Pov {
     public static class Key {
     }
 
@@ -21,13 +22,12 @@ public class Pov implements IntSupplier {
         this.degrees = degrees;
     }
 
-    @Override
-    public int getAsInt() {
+    public int get() {
         return degrees.getAsInt();
     }
 
-    public int get() {
-        return degrees.getAsInt();
+    public Pov map(final IntUnaryOperator function) {
+        return new Pov(() -> function.applyAsInt(get()));
     }
 
     public static final int CENTER = -1;
@@ -39,9 +39,6 @@ public class Pov implements IntSupplier {
     public static final int DOWN_LEFT = 45 * 5;
     public static final int LEFT = 45 * 6;
     public static final int UP_LEFT = 45 * 7;
-
-    public static final int DEFAULT_VALUE = CENTER;
-    public static final Pov DEFAULT = new Pov(() -> DEFAULT_VALUE);
 
     public Button matchesValue(final int degrees) {
         return new Button(() -> get() == degrees);
