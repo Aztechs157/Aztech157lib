@@ -1,6 +1,6 @@
 package org.aztechs157.examples.input;
 
-import org.aztechs157.lib.input.MapLayout;
+import org.aztechs157.lib.input.layouts.MapLayout;
 import org.aztechs157.lib.input.models.LogitechGamepadF310;
 
 public class DriverInputs {

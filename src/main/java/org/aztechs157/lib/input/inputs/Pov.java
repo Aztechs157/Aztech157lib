@@ -1,4 +1,4 @@
-package org.aztechs157.lib.input;
+package org.aztechs157.lib.input.inputs;
 
 import java.util.function.IntSupplier;
 import java.util.function.IntUnaryOperator;

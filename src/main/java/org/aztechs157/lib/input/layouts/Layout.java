@@ -1,4 +1,8 @@
-package org.aztechs157.lib.input;
+package org.aztechs157.lib.input.layouts;
+
+import org.aztechs157.lib.input.inputs.Axis;
+import org.aztechs157.lib.input.inputs.Button;
+import org.aztechs157.lib.input.inputs.Pov;
 
 public interface Layout {
     /**

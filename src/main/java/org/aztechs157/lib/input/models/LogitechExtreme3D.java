@@ -1,9 +1,9 @@
 package org.aztechs157.lib.input.models;
 
-import org.aztechs157.lib.input.Axis;
-import org.aztechs157.lib.input.Button;
 import org.aztechs157.lib.input.Model;
-import org.aztechs157.lib.input.Pov;
+import org.aztechs157.lib.input.inputs.Axis;
+import org.aztechs157.lib.input.inputs.Button;
+import org.aztechs157.lib.input.inputs.Pov;
 
 public class LogitechExtreme3D extends Model {
     public LogitechExtreme3D(final int joystickId) {

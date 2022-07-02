@@ -1,6 +1,10 @@
-package org.aztechs157.lib.input;
+package org.aztechs157.lib.input.layouts;
 
 import java.util.function.Supplier;
+
+import org.aztechs157.lib.input.inputs.Axis;
+import org.aztechs157.lib.input.inputs.Button;
+import org.aztechs157.lib.input.inputs.Pov;
 
 /**
  * Object that manages layouts. A layout can be selected from Shuffleboard that

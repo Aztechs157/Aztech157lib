@@ -1,7 +1,11 @@
-package org.aztechs157.lib.input;
+package org.aztechs157.lib.input.layouts;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.aztechs157.lib.input.inputs.Axis;
+import org.aztechs157.lib.input.inputs.Button;
+import org.aztechs157.lib.input.inputs.Pov;
 
 /**
  * A simple structure that stores the mapping between keys and inputs. These can
