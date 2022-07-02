@@ -3,24 +3,15 @@ package org.aztechs157.lib.input.inputs;
 import java.util.function.IntSupplier;
 import java.util.function.IntUnaryOperator;
 
+import org.aztechs157.lib.input.BaseKey;
+
 import edu.wpi.first.wpilibj.DriverStation;
 
 /**
  * Class for getting input from a pov.
  */
 public class Pov {
-    public static class Key {
-        private String label = "Unknown";
-
-        public Key label(final String label) {
-            this.label = label;
-            return this;
-        }
-
-        @Override
-        public String toString() {
-            return label;
-        }
+    public static class Key extends BaseKey<Key> {
     }
 
     private final IntSupplier degrees;

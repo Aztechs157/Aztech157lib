@@ -3,6 +3,7 @@ package org.aztechs157.lib.input.inputs;
 import java.util.function.DoubleSupplier;
 import java.util.function.DoubleUnaryOperator;
 
+import org.aztechs157.lib.input.BaseKey;
 import org.aztechs157.lib.util.Range;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -13,18 +14,7 @@ import edu.wpi.first.wpilibj.DriverStation;
  * {@link Axis}.
  */
 public class Axis {
-    public static class Key {
-        private String label = "Unknown";
-
-        public Key label(final String label) {
-            this.label = label;
-            return this;
-        }
-
-        @Override
-        public String toString() {
-            return label;
-        }
+    public static class Key extends BaseKey<Key> {
     }
 
     private final DoubleSupplier value;

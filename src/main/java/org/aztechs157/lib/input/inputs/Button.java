@@ -3,6 +3,8 @@ package org.aztechs157.lib.input.inputs;
 import java.util.function.BooleanSupplier;
 import java.util.function.UnaryOperator;
 
+import org.aztechs157.lib.input.BaseKey;
+
 import edu.wpi.first.wpilibj.DriverStation;
 
 /**
@@ -11,18 +13,7 @@ import edu.wpi.first.wpilibj.DriverStation;
  * {@link Button}.
  */
 public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
-    public static class Key {
-        private String label = "Unknown";
-
-        public Key label(final String label) {
-            this.label = label;
-            return this;
-        }
-
-        @Override
-        public String toString() {
-            return label;
-        }
+    public static class Key extends BaseKey<Key> {
     }
 
     public Button(final BooleanSupplier isPressed) {
