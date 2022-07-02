@@ -58,7 +58,7 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
      * @return A new input that is only true when all of the passed inputs are true
      */
     public static Button all(final Button first, final Button... rest) {
-        return new Button(() -> {
+        final var button = new Button(() -> {
             // Check each input individually
             // As soon as one input is false, return false
             // The first argument is explicit to prevent being given empty arrays
@@ -76,6 +76,13 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
             // All inputs are true at this point, so return true
             return true;
         });
+
+        final var label = new StringBuilder(first.toString());
+        for (final var input : rest) {
+            label.append(" + " + input);
+        }
+
+        return button.label(label.toString());
     }
 
     /**
@@ -86,7 +93,7 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
      * @return A new input that is true when any of the passed inputs are true
      */
     public static Button any(final Button first, final Button... rest) {
-        return new Button(() -> {
+        final var button = new Button(() -> {
             // Check each input individually
             // As soon as one input is true, return true
             // The first argument is explicit to prevent being given empty arrays
@@ -104,5 +111,11 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
             // All inputs are false at this point, so return false
             return false;
         });
+
+        final var label = new StringBuilder(first.toString());
+        for (final var input : rest) {
+            label.append(" or " + input);
+        }
+        return button.label(label.toString());
     }
 }
