@@ -87,34 +87,36 @@ public class MapLayout implements Layout {
     @Override
     public String toString() {
         final var builder = new StringBuilder("Layout\n");
+        final var headerFormat = "\n%s:\n";
+        final var entryFormat = "%s -> %s\n";
 
         if (!buttons.isEmpty()) {
-            builder.append("\nButtons:\n");
+            builder.append(String.format(headerFormat, "Buttons"));
             for (final var entry : buttons.entrySet()) {
-                builder.append(entry.getKey());
-                builder.append(" -> ");
-                builder.append(entry.getValue());
-                builder.append("\n");
+                builder.append(String.format(
+                        entryFormat,
+                        entry.getKey(),
+                        entry.getValue()));
             }
         }
 
         if (!axes.isEmpty()) {
-            builder.append("\nAxes:\n");
+            builder.append(String.format(headerFormat, "Axes"));
             for (final var entry : axes.entrySet()) {
-                builder.append(entry.getKey());
-                builder.append(" -> ");
-                builder.append(entry.getValue());
-                builder.append("\n");
+                builder.append(String.format(
+                        entryFormat,
+                        entry.getKey(),
+                        entry.getValue()));
             }
         }
 
         if (!povs.isEmpty()) {
-            builder.append("\nPovs:\n");
+            builder.append(String.format(headerFormat, "Povs"));
             for (final var entry : povs.entrySet()) {
-                builder.append(entry.getKey());
-                builder.append(" -> ");
-                builder.append(entry.getValue());
-                builder.append("\n");
+                builder.append(String.format(
+                        entryFormat,
+                        entry.getKey(),
+                        entry.getValue()));
             }
         }
 
