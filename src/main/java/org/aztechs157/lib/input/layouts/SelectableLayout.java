@@ -52,4 +52,9 @@ public class SelectableLayout implements Layout {
     public Pov pov(final Pov.Key key) {
         return new Pov(() -> getSelected().pov(key).get());
     }
+
+    @Override
+    public String toString() {
+        return getSelected().toString();
+    }
 }

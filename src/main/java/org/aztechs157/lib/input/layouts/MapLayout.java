@@ -83,4 +83,35 @@ public class MapLayout implements Layout {
     public Pov pov(final Pov.Key key) {
         return povs.get(key);
     }
+
+    @Override
+    public String toString() {
+        final var builder = new StringBuilder("Layout\n");
+
+        builder.append("\nButtons:\n");
+        for (final var entry : buttons.entrySet()) {
+            builder.append(entry.getKey());
+            builder.append(" -> ");
+            builder.append(entry.getValue());
+            builder.append("\n");
+        }
+
+        builder.append("\nAxes:\n");
+        for (final var entry : axes.entrySet()) {
+            builder.append(entry.getKey());
+            builder.append(" -> ");
+            builder.append(entry.getValue());
+            builder.append("\n");
+        }
+
+        builder.append("\nPovs:\n");
+        for (final var entry : povs.entrySet()) {
+            builder.append(entry.getKey());
+            builder.append(" -> ");
+            builder.append(entry.getValue());
+            builder.append("\n");
+        }
+
+        return builder.toString();
+    }
 }
