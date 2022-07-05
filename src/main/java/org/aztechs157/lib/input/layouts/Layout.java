@@ -3,6 +3,7 @@ package org.aztechs157.lib.input.layouts;
 import org.aztechs157.lib.input.inputs.Axis;
 import org.aztechs157.lib.input.inputs.Button;
 import org.aztechs157.lib.input.inputs.Pov;
+import org.aztechs157.lib.input.inputs.Raw;
 
 public interface Layout {
     /**
@@ -28,4 +29,6 @@ public interface Layout {
      * @return The associated pov
      */
     public Pov pov(final Pov.Key key);
+
+    public Raw raw(final Raw.Key key);
 }

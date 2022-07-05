@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import org.aztechs157.lib.input.inputs.Axis;
 import org.aztechs157.lib.input.inputs.Button;
 import org.aztechs157.lib.input.inputs.Pov;
+import org.aztechs157.lib.input.inputs.Raw;
 
 /**
  * Object that manages layouts. A layout can be selected from Shuffleboard that
@@ -51,6 +52,10 @@ public class SelectableLayout implements Layout {
      */
     public Pov pov(final Pov.Key key) {
         return new Pov(() -> getSelected().pov(key).get());
+    }
+
+    public Raw raw(final Raw.Key key) {
+        return new Raw(() -> getSelected().raw(key).get());
     }
 
     @Override

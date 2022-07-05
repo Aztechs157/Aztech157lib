@@ -6,6 +6,7 @@ import java.util.Map;
 import org.aztechs157.lib.input.inputs.Axis;
 import org.aztechs157.lib.input.inputs.Button;
 import org.aztechs157.lib.input.inputs.Pov;
+import org.aztechs157.lib.input.inputs.Raw;
 
 /**
  * A simple structure that stores the mapping between keys and inputs. These can
@@ -15,6 +16,7 @@ public class MapLayout implements Layout {
     private final Map<Button.Key, Button> buttons = new HashMap<>();
     private final Map<Axis.Key, Axis> axes = new HashMap<>();
     private final Map<Pov.Key, Pov> povs = new HashMap<>();
+    private final Map<Raw.Key, Raw> raws = new HashMap<>();
 
     /**
      * For this Layout, assign a {@link Button.Key} to a {@link Button}.
@@ -54,6 +56,10 @@ public class MapLayout implements Layout {
         povs.put(key, pov);
     }
 
+    public void assign(final Raw.Key key, final Raw pov) {
+        raws.put(key, pov);
+    }
+
     /**
      * Retrieve the {@link Button} associated with a {@link Button.Key}
      *
@@ -82,6 +88,10 @@ public class MapLayout implements Layout {
      */
     public Pov pov(final Pov.Key key) {
         return povs.get(key);
+    }
+
+    public Raw raw(final Raw.Key key) {
+        return raws.get(key);
     }
 
     @Override
@@ -113,6 +123,16 @@ public class MapLayout implements Layout {
         if (!povs.isEmpty()) {
             builder.append(String.format(headerFormat, "Povs"));
             for (final var entry : povs.entrySet()) {
+                builder.append(String.format(
+                        entryFormat,
+                        entry.getKey(),
+                        entry.getValue()));
+            }
+        }
+
+        if (!raws.isEmpty()) {
+            builder.append(String.format(headerFormat, "Raws"));
+            for (final var entry : raws.entrySet()) {
                 builder.append(String.format(
                         entryFormat,
                         entry.getKey(),
