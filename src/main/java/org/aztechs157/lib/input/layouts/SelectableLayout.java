@@ -58,8 +58,15 @@ public class SelectableLayout implements Layout {
         return new Raw(() -> getSelected().raw(key).get());
     }
 
+    private String label = "Unknown";
+
+    public SelectableLayout label(final String label) {
+        this.label = label;
+        return this;
+    }
+
     @Override
     public String toString() {
-        return getSelected().toString();
+        return label + "\n" + getSelected().toString();
     }
 }

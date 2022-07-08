@@ -3,6 +3,7 @@ package org.aztechs157.lib.input.layouts;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.aztechs157.lib.input.Labelable;
 import org.aztechs157.lib.input.inputs.Axis;
 import org.aztechs157.lib.input.inputs.Button;
 import org.aztechs157.lib.input.inputs.Pov;
@@ -12,7 +13,7 @@ import org.aztechs157.lib.input.inputs.Raw;
  * A simple structure that stores the mapping between keys and inputs. These can
  * be used with {@link SelectableLayout} to allow hot-swapping of layouts.
  */
-public class MapLayout implements Layout {
+public class MapLayout implements Layout, Labelable<MapLayout> {
     private final Map<Button.Key, Button> buttons = new HashMap<>();
     private final Map<Axis.Key, Axis> axes = new HashMap<>();
     private final Map<Pov.Key, Pov> povs = new HashMap<>();
@@ -94,11 +95,22 @@ public class MapLayout implements Layout {
         return raws.get(key);
     }
 
+    private String label = "Unknown";
+
+    public MapLayout label(final String label) {
+        this.label = label;
+        return this;
+    }
+
     @Override
     public String toString() {
-        final var builder = new StringBuilder("Layout\n");
+        final var layoutLabelFormat = "%s\n";
         final var headerFormat = "\n%s:\n";
         final var entryFormat = "%s -> %s\n";
+
+        final var builder = new StringBuilder();
+
+        builder.append(String.format(layoutLabelFormat, this.label));
 
         if (!buttons.isEmpty()) {
             builder.append(String.format(headerFormat, "Buttons"));
