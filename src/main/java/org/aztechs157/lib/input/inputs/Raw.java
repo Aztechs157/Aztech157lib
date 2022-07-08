@@ -3,10 +3,11 @@ package org.aztechs157.lib.input.inputs;
 import java.util.function.Supplier;
 
 import org.aztechs157.lib.input.BaseKey;
+import org.aztechs157.lib.input.Labelable;
 
 import edu.wpi.first.wpilibj.GenericHID;
 
-public class Raw {
+public class Raw implements Labelable<Raw> {
     public static class Key extends BaseKey<Key> {
     }
 

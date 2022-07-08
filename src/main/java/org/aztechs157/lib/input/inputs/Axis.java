@@ -4,6 +4,7 @@ import java.util.function.DoubleSupplier;
 import java.util.function.DoubleUnaryOperator;
 
 import org.aztechs157.lib.input.BaseKey;
+import org.aztechs157.lib.input.Labelable;
 import org.aztechs157.lib.util.Range;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -13,7 +14,7 @@ import edu.wpi.first.wpilibj.DriverStation;
  * methods to modify and compose {@link Axis}s into a new
  * {@link Axis}.
  */
-public class Axis {
+public class Axis implements Labelable<Axis> {
     public static class Key extends BaseKey<Key> {
     }
 

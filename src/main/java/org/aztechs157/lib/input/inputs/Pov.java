@@ -4,13 +4,14 @@ import java.util.function.IntSupplier;
 import java.util.function.IntUnaryOperator;
 
 import org.aztechs157.lib.input.BaseKey;
+import org.aztechs157.lib.input.Labelable;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
 /**
  * Class for getting input from a pov.
  */
-public class Pov {
+public class Pov implements Labelable<Pov> {
     public static class Key extends BaseKey<Key> {
     }
 

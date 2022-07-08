@@ -4,6 +4,7 @@ import java.util.function.BooleanSupplier;
 import java.util.function.UnaryOperator;
 
 import org.aztechs157.lib.input.BaseKey;
+import org.aztechs157.lib.input.Labelable;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.DriverStation;
  * methods to modify and compose {@link Button}s into a new
  * {@link Button}.
  */
-public class Button extends edu.wpi.first.wpilibj2.command.button.Button {
+public class Button extends edu.wpi.first.wpilibj2.command.button.Button implements Labelable<Button> {
     public static class Key extends BaseKey<Key> {
     }
 
