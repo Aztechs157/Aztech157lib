@@ -26,7 +26,7 @@ public class Pov implements Labelable<Pov> {
                 .label("Device " + deviceId + " Pov " + povId);
     }
 
-    private String label = "Unknown";
+    private String label = "Unlabeled Pov";
 
     public Pov label(final String label) {
         this.label = label;

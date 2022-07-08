@@ -1,7 +1,7 @@
 package org.aztechs157.lib.input;
 
 public abstract class BaseKey<T extends BaseKey<T>> implements Labelable<BaseKey<T>> {
-    private String label = "Unknown";
+    private String label = "Unlabeled Key";
 
     @SuppressWarnings("unchecked")
     public T label(final String label) {

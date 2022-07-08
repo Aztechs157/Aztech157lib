@@ -95,7 +95,7 @@ public class MapLayout implements Layout, Labelable<MapLayout> {
         return raws.get(key);
     }
 
-    private String label = "Unknown";
+    private String label = "Unlabeled MapLayout";
 
     public MapLayout label(final String label) {
         this.label = label;

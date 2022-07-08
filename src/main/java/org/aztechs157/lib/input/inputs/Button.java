@@ -26,7 +26,7 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button impleme
                 .label("Device " + deviceId + " Button " + buttonId);
     }
 
-    private String label = "Unknown";
+    private String label = "Unlabeled Button";
 
     public Button label(final String label) {
         this.label = label;

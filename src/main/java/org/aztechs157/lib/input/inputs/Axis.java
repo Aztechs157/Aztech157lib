@@ -29,7 +29,7 @@ public class Axis implements Labelable<Axis> {
                 .label("Device " + deviceId + " Axis " + axisId);
     }
 
-    private String label = "Unknown";
+    private String label = "Unlabeled Axis";
 
     public Axis label(final String label) {
         this.label = label;

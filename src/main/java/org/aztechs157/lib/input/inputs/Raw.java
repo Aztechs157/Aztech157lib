@@ -24,7 +24,7 @@ public class Raw implements Labelable<Raw> {
                 .label("Device " + deviceId + " Raw");
     }
 
-    private String label = "Unknown";
+    private String label = "Unlabeled Raw";
 
     public Raw label(final String label) {
         this.label = label;

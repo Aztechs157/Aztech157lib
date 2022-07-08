@@ -58,7 +58,7 @@ public class SelectableLayout implements Layout {
         return new Raw(() -> getSelected().raw(key).get());
     }
 
-    private String label = "Unknown";
+    private String label = "Unlabeled Selectable Layout";
 
     public SelectableLayout label(final String label) {
         this.label = label;
