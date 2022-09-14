@@ -64,12 +64,12 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button impleme
             // As soon as one input is false, return false
             // The first argument is explicit to prevent being given empty arrays
 
-            if (first.get() == false) {
+            if (first != null && first.get() == false) {
                 return false;
             }
 
             for (final var input : rest) {
-                if (input.get() == false) {
+                if (input != null && input.get() == false) {
                     return false;
                 }
             }
@@ -78,7 +78,7 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button impleme
             return true;
         });
 
-        final var label = new StringBuilder(first.toString());
+        final var label = new StringBuilder(first + "");
         for (final var input : rest) {
             label.append(" + " + input);
         }
@@ -99,12 +99,12 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button impleme
             // As soon as one input is true, return true
             // The first argument is explicit to prevent being given empty arrays
 
-            if (first.get()) {
+            if (first != null && first.get()) {
                 return true;
             }
 
             for (final var input : rest) {
-                if (input.get()) {
+                if (input != null && input.get()) {
                     return true;
                 }
             }
@@ -113,7 +113,7 @@ public class Button extends edu.wpi.first.wpilibj2.command.button.Button impleme
             return false;
         });
 
-        final var label = new StringBuilder(first.toString());
+        final var label = new StringBuilder(first + "");
         for (final var input : rest) {
             label.append(" or " + input);
         }
