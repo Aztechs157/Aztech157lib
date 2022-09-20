@@ -8,6 +8,7 @@ import org.aztechs157.lib.input.inputs.Axis;
 import org.aztechs157.lib.input.inputs.Button;
 import org.aztechs157.lib.input.inputs.Pov;
 import org.aztechs157.lib.input.inputs.Raw;
+import java.util.function.BiFunction;
 
 /**
  * A simple structure that stores the mapping between keys and inputs. These can
@@ -29,7 +30,7 @@ public class MapLayout implements Layout, Labelable<MapLayout> {
      * @param button The button being assigned
      */
     public void assign(final Button.Key key, final Button button) {
-        buttons.put(key, button);
+        buttons.put(key, buttonAssigner.apply(buttons.get(key), button));
     }
 
     /**
@@ -42,7 +43,7 @@ public class MapLayout implements Layout, Labelable<MapLayout> {
      * @param axis The axis being assigned
      */
     public void assign(final Axis.Key key, final Axis axis) {
-        axes.put(key, axis);
+        axes.put(key, axisAssigner.apply(axes.get(key), axis));
     }
 
     /**
@@ -54,11 +55,36 @@ public class MapLayout implements Layout, Labelable<MapLayout> {
      * @param pov The pov being assigned
      */
     public void assign(final Pov.Key key, final Pov pov) {
-        povs.put(key, pov);
+        povs.put(key, povAssigner.apply(povs.get(key), pov));
     }
 
-    public void assign(final Raw.Key key, final Raw pov) {
-        raws.put(key, pov);
+    public void assign(final Raw.Key key, final Raw raw) {
+        raws.put(key, rawAssigner.apply(raws.get(key), raw));
+    }
+
+    private BiFunction<Button, Button, Button> buttonAssigner = (prev, next) -> next;
+    private BiFunction<Axis, Axis, Axis> axisAssigner = (prev, next) -> next;
+    private BiFunction<Pov, Pov, Pov> povAssigner = (prev, next) -> next;
+    private BiFunction<Raw, Raw, Raw> rawAssigner = (prev, next) -> next;
+
+    public MapLayout assignButtonsWith(final BiFunction<Button, Button, Button> buttonAssigner) {
+        this.buttonAssigner = buttonAssigner;
+        return this;
+    }
+
+    public MapLayout assignAxesWith(final BiFunction<Axis, Axis, Axis> axisAssigner) {
+        this.axisAssigner = axisAssigner;
+        return this;
+    }
+
+    public MapLayout assignPovsWith(final BiFunction<Pov, Pov, Pov> povAssigner) {
+        this.povAssigner = povAssigner;
+        return this;
+    }
+
+    public MapLayout assignRawsWith(final BiFunction<Raw, Raw, Raw> rawAssigner) {
+        this.rawAssigner = rawAssigner;
+        return this;
     }
 
     /**
